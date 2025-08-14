@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage[a4paper,margin=1.5cm]{geometry}
+\usepackage{fontspec}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+
+% - Colores para primer parcial - 
+\definecolor{mybg}{HTML}{F4978e}
+\definecolor{mytemp}{HTML}{F08080}
+\colorlet{mybor}{mytemp!60!black}
+
+\setmainfont{Calibri} % o "Arial", "Times New Roman", "Consolas", etc.
+
+\newcounter{clasenro}
+\newcommand{\ClaseBoxAuto}[3][]{%
+  \refstepcounter{clasenro}%
+  \begin{tcolorbox}[
+    enhanced, leftrule=10mm, sharp corners=northwest,
+    colframe=mybor, colback=mybg,
+    overlay={\node[anchor=center,text=white,font=\bfseries\Large]
+      at ([xshift=5mm]frame.west) {\theclasenro};},
+    #1
+  ]
+    \begin{center}
+      Clase del \textsc{#2} \,-\, \textbf{#3}
+    \end{center}
+  \end{tcolorbox}%
+}
+
+
+\begin{document}
+% Title page
+\input{tittle.tex}
+% Archivo generado automaticamente NO TOCAR
+\input{inputs_auto.tex}
+
+\end{document}
