@@ -27,6 +27,75 @@
   \end{tcolorbox}%
 }
 
+\definecolor{defFrame}{HTML}{2E7D32} % verde sobrio (marco/franja definiciones)
+\definecolor{defBack}{HTML}{EEF6EE}  % verde muy claro (fondo definiciones)
+
+\definecolor{obsFrame}{HTML}{8D6E63} % marrón suave (marco/franja observaciones)
+\definecolor{obsBack}{HTML}{F7F2EF}  % crema muy claro (fondo observaciones)
+
+\definecolor{exFrame}{HTML}{546E7A}  % azul grisáceo (marco/franja ejercicios)
+\definecolor{exBack}{HTML}{F2F6F8}   % gris-azulado muy claro (fondo ejercicios)
+
+% ==== Estilo base para que todo combine ====
+\tcbset{
+  mybase/.style={
+    enhanced,
+    sharp corners=northwest,
+    coltitle=black,
+    fonttitle=\bfseries,
+    boxsep=4pt,   % padding interno
+    left=6pt,     % margen interior izquierdo
+    right=6pt,
+    top=6pt,
+    bottom=6pt,
+  }
+}
+
+% ==== Definición ====
+\newtcolorbox{definicion}[1][]{%
+  mybase,
+  colframe=defFrame,
+  colback=defBack,
+  borderline west={10mm}{0pt}{defFrame}, % franja izquierda
+  title=\textbf{Definición},
+  % Sello "DEF" en la franja (discreto)
+  overlay={
+    \node[anchor=center,text=white,font=\bfseries\footnotesize]
+      at ([xshift=5mm]frame.west) {DEF};
+  },
+  #1
+}
+
+% ==== Observación ====
+\newtcolorbox{observacion}[1][]{%
+  mybase,
+  colframe=obsFrame,
+  colback=obsBack,
+  borderline west={10mm}{0pt}{obsFrame},
+  title=\textbf{Observación},
+  overlay={
+    \node[anchor=center,text=white,font=\bfseries\footnotesize]
+      at ([xshift=5mm]frame.west) {OBS};
+  },
+  #1
+}
+
+% ==== Ejercicio teórico ====
+\newcounter{exth}
+\newtcolorbox{ejercicioTeorico}[2][]{%
+  mybase,
+  colframe=exFrame,
+  colback=exBack,
+  borderline west={10mm}{0pt}{exFrame},
+  before upper=\refstepcounter{exth},
+  title={\textbf{Ejercicio teórico \theexth}\IfValueT{#2}{\,: \,#2}},
+  overlay={
+    \node[anchor=center,text=white,font=\bfseries\footnotesize]
+      at ([xshift=5mm]frame.west) {EX};
+  },
+  #1
+}
+
 
 \begin{document}
 % Title page

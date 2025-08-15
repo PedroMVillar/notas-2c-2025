@@ -1,0 +1,65 @@
+\newpage
+\ClaseBoxAuto{Jueves 14 de Agosto}{Introducción}
+
+Algebra de tabla es mas simple que sql pero mas formal
+
+\section{Lenguajes de Consulta}
+
+\section{Sistema gestor de bases de datos relacionales}
+
+\subsection{Gestor de almacenamiento}
+
+\subsection{Niveles lógico y físico}
+
+\subsubsection{Nivel lógico y físico}
+
+\paragraph{Nivel físico}
+Completar
+
+\paragraph{Nivel lógico}
+Implementa el \textit{cómo acceder} a los datos, trabaja con formatos por bloques y registros, y con la estructura física del almacenamiento. El acceso eficiente a los datos es implementado mediante \textbf{índices}.
+
+El índice si es grande, puede cargarse una parte en RAM y otra parte en disco, en cambio si es pequeño se puede cargar todo en RAM. Normalmente las tablas como índices están en archivos físicos, y el dónde se encuentra depende del sistema operativo y del sistema de archivos.
+
+\begin{tcolorbox}[colback=white,colframe=red,sharp corners]
+
+Arriba del nivel lógico tenemos la aplicación de base de datos, que es la que interactúa con el usuario, y debajo del nivel físico tenemos el sistema operativo (manejo de memoria, archivos, etc). El gestor de almacenamiento se encuentra en medio, provee una interfaz entre el almacenamiento físico y las consultas y actualizaciones.
+
+Va a \textbf{manejar} tanto el almacenamiento en disco como en memoria.
+
+Las responsabilidades del gestor de almacenamiento son:
+\begin{itemize}
+    \item Dar forma adecuada de \textbf{almacenar los datos}. Organizar datos en archivos.
+    \item Definir \textbf{cómo acceder al almacenamiento} de manera eficiente.
+    \item \textbf{Mantener índices, archivos y catálogos}.
+    \item \textbf{Optimizar el acceso} a los datos. Mediante el uso de índices, por ejemplo operaciones para crear índices, indexar datos, etc.
+    \item \textbf{Administrar el espacio} en memoria.
+\end{itemize}
+
+Y las funciones específicas son:
+\begin{itemize}
+    \item \textbf{Manejo de archivos e índices}.
+    \item \textbf{Manejar catálogos}, es decir metadatos.
+    \item \textbf{Admimistración de memoria}, mediante \textit{pool de bufferes}, \textit{caching} y \textit{paginación}.
+\end{itemize}
+
+\end{tcolorbox}
+
+\subsection{Procesamiento de consultas}
+
+La idea principal es consultar el lenguaje declarativo como SQL, y esta va a ser transformada en una ejecución eficiente de los datos. El algoritmo va a \textbf{acceder} a funciones del \textit{gestor de almacenamiento}.
+
+Ahora bien, hay que dividir este procesamiento en varias etapas y por cada una de estas dar componentes que se encarguen de realizar las tareas específicas. Estas etapas son:
+
+\begin{enumerate}
+    \item \textbf{Parseo y traducción}:
+    \item \textbf{Optimización de consultas}:
+    \item \textbf{Evaluación}:
+\end{enumerate}
+
+\begin{tcolorbox}[colback=white,colframe=red,sharp corners]
+En resumen, el procesamiento de consultas hace referencia a todo lo implicado en la extracción de datos de una base de datos. Incluyendo la \textbf{traducción} de consultas expresadas en lenguajes de bases de datos de alto nivel en expresiones implementadas en el nivel físico del sistema, la \textbf{optimización} de estas expresiones para mejorar la eficiencia de la ejecución, y la \textbf{evaluación} de las expresiones optimizadas para recuperar los datos solicitados.
+\end{tcolorbox}
+
+\subsection{Gestión de transacciones}
+
